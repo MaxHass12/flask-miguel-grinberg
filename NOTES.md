@@ -16,3 +16,19 @@
 - Another peculiarity is that the `from app import routes` is at the bottom. Why ? To avoid circular imports because routes refer the `app` variable.
 
 - `routes.py` contains the different routes handling the different URL which the application can support. The handlers for application routes are called _view functions_. 
+
+- The routes are defined like this
+```
+from app import app
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return "Hello, World!"
+```
+
+- The decorators with `@app.route(<a_route>)` creates an association between the URL given as an argument and the string.
+
+- To complete we need to create the script which runs the application. Typically named with the same name. 
+
+- Before running the app we add the script name as env var by `export FLASK_APP=microblog.py`
